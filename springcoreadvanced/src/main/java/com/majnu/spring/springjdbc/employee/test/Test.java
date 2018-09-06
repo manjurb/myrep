@@ -16,10 +16,13 @@ public class Test
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("com/majnu/spring/springjdbc/employee/test/config.xml");
 		EmployeeDao dao=(EmployeeDao) ctx.getBean("employeeDao");
 		Employee employee = new Employee();
-		employee.setId(2);
-		employee.setFirstName("Aishu");
-		employee.setLastName("Biradar");
-		int result=dao.create(employee);
+		employee.setId(1);
+		employee.setFirstName("Shankar");
+		employee.setLastName("Bhapri");
+		//int result=dao.create(employee);
+		int result=dao.update(employee);
+		//int result=dao.delete(3);
+		//System.out.println("No of records deleted are "+result);
 		System.out.println("No of records inserted are "+result);
 	}
 
