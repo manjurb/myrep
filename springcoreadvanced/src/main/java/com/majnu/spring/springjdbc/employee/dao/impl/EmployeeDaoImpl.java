@@ -1,12 +1,17 @@
 package com.majnu.spring.springjdbc.employee.dao.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import com.majnu.spring.springjdbc.employee.dao.EmployeeDao;
+import com.majnu.spring.springjdbc.employee.dao.rowmapper.EmployeeRowMapper;
 import com.majnu.spring.springjdbc.employee.dto.Employee;
-
+@Component("employeeDao")
 public class EmployeeDaoImpl implements EmployeeDao {
-	
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
@@ -26,6 +31,22 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		String sql="delete from Employee where id=?";
 		int result=jdbcTemplate.update(sql,id);
 		return result;
+	}
+	@Override
+	public Employee read(int id) {
+		String sql="select * from Employee where id=?";
+		EmployeeRowMapper rowmapper=new EmployeeRowMapper();
+		Employee employee=jdbcTemplate.queryForObject(sql, rowmapper, id);
+		return employee;
+		
+	}
+	@Override
+	public List<Employee> read() {
+		String sql="select * from Employee";
+		EmployeeRowMapper rowmapper=new EmployeeRowMapper();
+		List<Employee> result=jdbcTemplate.query(sql, rowmapper);
+		return result;
+		
 	}
 
 	public JdbcTemplate getJdbcTemplate() {
