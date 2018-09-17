@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:context="http://www.springframework.org/schema/context">
+	<context:annotation-config></context:annotation-config>
+	
+<bean name="hospital" class="com.majnu.spring.springcore.list.Hospital"
+>
+	<property name="name">
+		<value>"Government Hospital" </value>
+	</property>
+	<property name="departments">
+		<list>
+			<value>"Front office"</value>
+			<value>"In Patients"</value>
+			<value>Out patients</value>
+		</list>
+	</property>
+</bean >
+</beans>
